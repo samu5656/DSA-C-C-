@@ -1,5 +1,6 @@
 // To return first non repeating string
 //time complexity: O(n²)
+//brute-force
 #include <iostream>
 #include <vector>
 #include <string>
