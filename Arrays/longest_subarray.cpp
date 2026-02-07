@@ -1,38 +1,30 @@
 #include <iostream>
 #include <vector>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
     vector<int> arr = {10, 5, 2, 7, 1, 9};
-    int n = arr.size();
-    int k = 15;
-    int maxlength = 0;
-    int windowsum = arr[0];
-    int sum = 0;
-    if (windowsum == k)
+    int k=15;
+    int n=arr.size();
+    int max_len=0,sum=arr[0];
+    int left=0,right=0;
+    while(right<n)
     {
-        maxlength++;
-        cout << "maxlength: \n"
-             << maxlength;
-    }
-    int windowlength = 0;
-    for (int i = 1; i < n; i++)
-    {
-        sum += arr[i];
-        if (sum > k)
+        while(left<=right && sum>k)
         {
-            windowsum += arr[i] - arr[i - 1];
-            windowlength++;
-            cout << "\nwindowlength: " << windowlength << endl;
-            cout << "windowsum: " << windowsum << endl;
-            if (windowsum == k)
-                ;
-            {
-                maxlength = max(windowlength, maxlength + 1);
-                cout << "maxlength: " << maxlength;
-            }
+            sum-=arr[left];
+            left++;
+        }
+        if(sum==k)
+        {
+            max_len=max(max_len,right-left+1);
+        }
+        right++;
+        if(right<n)
+        {
+            sum+=arr[right];
         }
     }
-    cout << endl
-         << maxlength;
+    cout<<"Length of longest subarray with sum "<<k<<" is: "<<max_len;
 }
