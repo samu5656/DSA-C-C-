@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maximum Subarray Sum - O(n²) Brute Force</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= HEADER ================= -->
+
+        <header>
+            <h1>Maximum Subarray Sum</h1>
+
+            <p>
+                O(n²) Brute Force Approach — Interactive Dry Run
+            </p>
+        </header>
+
+
+        <!-- ================= CODE + ANIMATION ================= -->
+
+        <div class="presentation-grid">
+
+            <!-- ================= CODE ================= -->
+
+            <section class="panel code-panel">
+
+                <h2>C++ Algorithm</h2>
+
+                <div class="code">
+
+                    <div class="code-line" id="line1">
+                        <span class="number">1</span>
+                        <span>for (int i = 0; i &lt; n; i++) {</span>
+                    </div>
+
+                    <div class="code-line indent1" id="line2">
+                        <span class="number">2</span>
+                        <span>int currentSum = 0;</span>
+                    </div>
+
+                    <div class="code-line indent1" id="line3">
+                        <span class="number">3</span>
+                        <span>for (int j = i; j &lt; n; j++) {</span>
+                    </div>
+
+                    <div class="code-line indent2" id="line4">
+                        <span class="number">4</span>
+                        <span>currentSum += arr[j];</span>
+                    </div>
+
+                    <div class="code-line indent2" id="line5">
+                        <span class="number">5</span>
+                        <span>if (currentSum &gt; maxSum) {</span>
+                    </div>
+
+                    <div class="code-line indent3" id="line6">
+                        <span class="number">6</span>
+                        <span>maxSum = currentSum;</span>
+                    </div>
+                    <div class="code-line indent3" id="line6">
+                        <span class="number">7</span>
+                        <span>Best_Start = i;</span>
+                    </div>
+                    <div class="code-line indent3" id="line6">
+                        <span class="number">8</span>
+                        <span>Best_end = j;</span>
+                    </div>
+                    <div class="code-line indent2" id="line7">
+                        <span class="number">9</span>
+                        <span>}</span>
+                    </div>
+
+                    <div class="code-line indent1" id="line8">
+                        <span class="number">10</span>
+                        <span>}</span>
+                    </div>
+
+                    <div class="code-line" id="line9">
+                        <span class="number">11</span>
+                        <span>}</span>
+                    </div>
+
+                </div>
+
+
+                <div class="algorithm-idea">
+
+                    <h3>Idea</h3>
+
+                    <p>
+                        <strong>i</strong> chooses the starting index.
+                    </p>
+
+                    <p>
+                        <strong>j</strong> expands the subarray.
+                    </p>
+
+                    <p>
+                        <strong>currentSum</strong> keeps adding the next element.
+                    </p>
+
+                    <p>
+                        <strong>maxSum</strong> stores the largest sum found.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ANIMATION ================= -->
+
+            <section class="panel animation-panel">
+
+                <h2>Dry Run Animation</h2>
+
+
+                <!-- ARRAY -->
+
+                <div class="array-title">
+                    Input Array
+                </div>
+
+                <div class="array-container" id="arrayContainer">
+                </div>
+
+
+                <!-- POINTERS -->
+
+                <div class="pointer-container" id="pointerContainer">
+                </div>
+
+
+                <!-- VARIABLES -->
+
+                <div class="variables">
+
+                    <div class="variable">
+
+                        <span>Starting Index (i)</span>
+
+                        <strong id="iValue">-</strong>
+
+                    </div>
+
+
+                    <div class="variable">
+
+                        <span>Ending Index (j)</span>
+
+                        <strong id="jValue">-</strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VALUES -->
+
+                <div class="info-box">
+
+                    <div>
+
+                        <span>Current Subarray</span>
+
+                        <strong id="subarray">-</strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>Current Sum</span>
+
+                        <strong id="currentSum">0</strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>Maximum Sum</span>
+
+                        <strong id="maxSum">-</strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATION -->
+
+                <div class="calculation-box">
+
+                    <div class="calculation-title">
+                        Current Calculation
+                    </div>
+
+                    <div id="calculation" class="calculation">
+
+                        Click "Next Step" to begin.
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPLANATION -->
+
+                <div class="explanation" id="explanation">
+
+                    Click
+                    <strong>Next Step</strong>
+                    to start the dry run.
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= CONTROLS ================= -->
+
+        <section class="controls">
+
+            <button id="prevBtn">
+
+                Previous Step
+
+            </button>
+
+
+            <button id="nextBtn" class="primary">
+
+                Next Step
+
+            </button>
+
+
+            <button id="autoBtn">
+
+                Auto Play
+
+            </button>
+
+
+            <button id="resetBtn">
+
+                Reset
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section class="progress-section">
+
+            <div class="progress-info">
+
+                <span>
+                    Subarrays Checked
+                </span>
+
+                <strong id="subarrayCount">
+                    0 / 45
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div id="progressFill" class="progress-fill">
+                </div>
+
+            </div>
+
+
+            <div class="step-info">
+
+                Step:
+                <strong id="stepNumber">0</strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMPLEXITY =================
+
+    <section class="complexity-section">
+
+        <h2>Complexity Analysis</h2>
+
+        <div class="complexity-card">
+
+            <div class="complexity-main">
+
+                <div class="complexity-item">
+
+                    <h3>Time Complexity</h3>
+
+                    <div class="formula">
+                        O(n) × O(n)
+                    </div>
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+                    <div class="big-complexity">
+                        O(n²)
+                    </div>
+
+                    <p>
+                        Two nested loops are used:
+                        the outer loop selects the starting
+                        index and the inner loop expands the
+                        subarray.
+                    </p>
+
+                </div>
+
+
+                <div class="complexity-item">
+
+                    <h3>Space Complexity</h3>
+
+                    <div class="formula">
+                        Constant Variables
+                    </div>
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+                    <div class="big-complexity">
+                        O(1)
+                    </div>
+
+                    <p>
+                        Only variables such as
+                        <strong>i, j, currentSum</strong>
+                        and <strong>maxSum</strong> are used.
+                        No extra array is created.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section> -->
+        <section class="complexity-section">
+
+            <h2>Complexity Analysis</h2>
+
+
+            <div class="complexity-grid">
+
+                <!-- TIME -->
+
+                <div class="complexity-card">
+
+                    <h3>
+                        Time Complexity
+                    </h3>
+
+
+                    <div class="loop-visual">
+
+                        <div>
+                            Outer Loop
+                            <strong>O(n)</strong>
+                        </div>
+
+                        <div class="multiply">
+                            ×
+                        </div>
+
+                        <div>
+                            Inner Loop
+                            <strong>O(n)</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="big-complexity">
+                        O(n²)
+                    </div>
+
+
+                    <p>
+                        There are two nested loops.
+                        The outer loop chooses the starting
+                        index and the inner loop expands the
+                        subarray.
+                    </p>
+
+
+                    <!-- Growth -->
+
+                    <h4>
+                        Growth of O(n²)
+                    </h4>
+
+
+                    <div class="growth-container">
+
+                        <div class="growth-row">
+
+                            <span>n = 2</span>
+
+                            <div class="bar">
+                                <div style="width: 4%">
+                                </div>
+                            </div>
+
+                            <span>4</span>
+
+                        </div>
+
+
+                        <div class="growth-row">
+
+                            <span>n = 4</span>
+
+                            <div class="bar">
+                                <div style="width: 16%">
+                                </div>
+                            </div>
+
+                            <span>16</span>
+
+                        </div>
+
+
+                        <div class="growth-row">
+
+                            <span>n = 6</span>
+
+                            <div class="bar">
+                                <div style="width: 36%">
+                                </div>
+                            </div>
+
+                            <span>36</span>
+
+                        </div>
+
+
+                        <div class="growth-row">
+
+                            <span>n = 8</span>
+
+                            <div class="bar">
+                                <div style="width: 64%">
+                                </div>
+                            </div>
+
+                            <span>64</span>
+
+                        </div>
+
+
+                        <div class="growth-row">
+
+                            <span>n = 10</span>
+
+                            <div class="bar">
+                                <div style="width: 100%">
+                                </div>
+                            </div>
+
+                            <span>100</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SPACE -->
+
+                <div class="complexity-card">
+
+                    <h3>
+                        Space Complexity
+                    </h3>
+
+
+                    <div class="memory-box">
+
+                        <div>i</div>
+
+                        <div>j</div>
+
+                        <div>currentSum</div>
+
+                        <div>maxSum</div>
+
+                    </div>
+
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="big-complexity">
+                        O(1)
+                    </div>
+
+
+                    <p>
+                        Only a constant number of variables
+                        are used as extra space.
+                    </p>
+
+
+                    <div class="space-demo">
+
+                        <div>
+
+                            <span>
+                                n = 9
+                            </span>
+
+                            <strong>
+                                O(1)
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                n = 100
+                            </span>
+
+                            <strong>
+                                O(1)
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                n = 1000
+                            </span>
+
+                            <strong>
+                                O(1)
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FINAL RESULT ================= -->
+
+        <section class="result" id="result">
+
+            <h2>
+                Final Result
+            </h2>
+
+            <p>
+                Maximum Subarray
+            </p>
+
+            <div id="finalArray" class="final-array">
+                -
+            </div>
+
+            <p>
+                Maximum Sum:
+                <strong id="finalSum">-</strong>
+            </p>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
